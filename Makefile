@@ -10,61 +10,111 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-INCLUDES = ./
-FLAGS = -Wall -Werror -Wextra
-CC = gcc
-RM = rm -f
-SRC = ft_split.c \
-ft_strtrim.c \
-ft_strmapi.c \
-ft_itoa.c \
-ft_putnbr_fd.c \
-ft_putendl_fd.c \
-ft_putstr_fd.c \
-ft_putchar_fd.c \
-ft_strjoin.c \
-ft_strncmp.c \
-ft_substr.c \
-ft_strdup.c \
-ft_calloc.c \
-ft_strnstr.c \
-ft_strrchr.c \
-ft_strchr.c \
-ft_strlcat.c \
-ft_strlcpy.c \
-ft_memcmp.c \
-ft_memchr.c \
-ft_memmove.c \
-ft_memccpy.c \
-ft_memcpy.c \
-ft_bzero.c \
-ft_atoi.c \
-ft_isalnum.c \
-ft_isalpha.c \
-ft_isascii.c \
-ft_isdigit.c \
-ft_isprint.c \
-ft_strlen.c \
-ft_tolower.c \
-ft_toupper.c \
-ft_memset.c \
+SRC_DIR = src
+INC_DIR = includes
+OBJ_DIR = obj
 
-OBJ = $(SRC:.c=.o)
+CC = gcc
+FLAGS = -Wall -Werror -Wextra
+NAME = libft.a
+
+SRC = 	$(SRC_DIR)/ft_split.c 		\
+		$(SRC_DIR)/ft_strtrim.c 	\
+		$(SRC_DIR)/ft_strmapi.c 	\
+		$(SRC_DIR)/ft_itoa.c 		\
+		$(SRC_DIR)/ft_putnbr_fd.c 	\
+		$(SRC_DIR)/ft_putendl_fd.c 	\
+		$(SRC_DIR)/ft_putstr_fd.c 	\
+		$(SRC_DIR)/ft_putchar_fd.c 	\
+		$(SRC_DIR)/ft_strjoin.c 	\
+		$(SRC_DIR)/ft_strncmp.c 	\
+		$(SRC_DIR)/ft_substr.c 		\
+		$(SRC_DIR)/ft_strdup.c 		\
+		$(SRC_DIR)/ft_calloc.c 		\
+		$(SRC_DIR)/ft_strnstr.c 	\
+		$(SRC_DIR)/ft_strrchr.c 	\
+		$(SRC_DIR)/ft_strchr.c 		\
+		$(SRC_DIR)/ft_strlcat.c 	\
+		$(SRC_DIR)/ft_strlcpy.c 	\
+		$(SRC_DIR)/ft_memcmp.c 		\
+		$(SRC_DIR)/ft_memchr.c 		\
+		$(SRC_DIR)/ft_memmove.c 	\
+		$(SRC_DIR)/ft_memccpy.c 	\
+		$(SRC_DIR)/ft_memcpy.c 		\
+		$(SRC_DIR)/ft_bzero.c 		\
+		$(SRC_DIR)/ft_atoi.c 		\
+		$(SRC_DIR)/ft_isalnum.c 	\
+		$(SRC_DIR)/ft_isalpha.c 	\
+		$(SRC_DIR)/ft_isascii.c 	\
+		$(SRC_DIR)/ft_isdigit.c 	\
+		$(SRC_DIR)/ft_isprint.c 	\
+		$(SRC_DIR)/ft_strlen.c 		\
+		$(SRC_DIR)/ft_tolower.c 	\
+		$(SRC_DIR)/ft_toupper.c 	\
+		$(SRC_DIR)/ft_memset.c 		\
+
+OBJ = 	$(OBJ_DIR)/ft_split.o 		\
+		$(OBJ_DIR)/ft_strtrim.o 	\
+		$(OBJ_DIR)/ft_strmapi.o 	\
+		$(OBJ_DIR)/ft_itoa.o 		\
+		$(OBJ_DIR)/ft_putnbr_fd.o 	\
+		$(OBJ_DIR)/ft_putendl_fd.o 	\
+		$(OBJ_DIR)/ft_putstr_fd.o 	\
+		$(OBJ_DIR)/ft_putchar_fd.o 	\
+		$(OBJ_DIR)/ft_strjoin.o 	\
+		$(OBJ_DIR)/ft_strncmp.o 	\
+		$(OBJ_DIR)/ft_substr.o 		\
+		$(OBJ_DIR)/ft_strdup.o 		\
+		$(OBJ_DIR)/ft_calloc.o 		\
+		$(OBJ_DIR)/ft_strnstr.o 	\
+		$(OBJ_DIR)/ft_strrchr.o 	\
+		$(OBJ_DIR)/ft_strchr.o 		\
+		$(OBJ_DIR)/ft_strlcat.o 	\
+		$(OBJ_DIR)/ft_strlcpy.o 	\
+		$(OBJ_DIR)/ft_memcmp.o 		\
+		$(OBJ_DIR)/ft_memchr.o 		\
+		$(OBJ_DIR)/ft_memmove.o 	\
+		$(OBJ_DIR)/ft_memccpy.o 	\
+		$(OBJ_DIR)/ft_memcpy.o 		\
+		$(OBJ_DIR)/ft_bzero.o 		\
+		$(OBJ_DIR)/ft_atoi.o 		\
+		$(OBJ_DIR)/ft_isalnum.o 	\
+		$(OBJ_DIR)/ft_isalpha.o 	\
+		$(OBJ_DIR)/ft_isascii.o 	\
+		$(OBJ_DIR)/ft_isdigit.o 	\
+		$(OBJ_DIR)/ft_isprint.o 	\
+		$(OBJ_DIR)/ft_strlen.o 		\
+		$(OBJ_DIR)/ft_tolower.o 	\
+		$(OBJ_DIR)/ft_toupper.o 	\
+		$(OBJ_DIR)/ft_memset.o 		\
+
+GREEN		= \033[0;32m
+
+YELLOW		= \033[0;33m
+
+RED			= \033[0;31m
+
+RESET		= \033[0m
 
 all: $(NAME)
 
-%.o:%.c
-	$(CC) -c $(FLAGS) -I $(INCLUDES) $< -o $@
+$(OBJ_DIR):
+	@mkdir -p $@
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(CC) -c $(FLAGS) -I $(INC_DIR) $< -o $@
+
+$(NAME): $(OBJ_DIR) $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
+	@echo "$(YELLOW)libft:$(RESET) $(GREEN)$(NAME) was created.$(RESET)"
+
 
 clean:
-	$(RM) $(OBJ)
+	@rm -frd $(OBJ_DIR)
+	@echo "$(YELLOW)libft:$(RESET) $(RED)/obj folder was deleted.$(RESET)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@rm -f $(NAME)
+	@echo "$(YELLOW)libft:$(RESET) $(RED)$(NAME) was deleted.$(RESET)"
 
 re: fclean all
