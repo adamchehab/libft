@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_get_nbr_len.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abronn <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/13 19:57:31 by abronn            #+#    #+#             */
-/*   Updated: 2020/11/13 19:57:36 by abronn           ###   ########.fr       */
+/*   Created: 2021/02/21 23:10:06 by abronn            #+#    #+#             */
+/*   Updated: 2021/02/21 23:10:22 by abronn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(char *str, char ch)
+int		ft_get_nbr_len(int nbr, int base)
 {
-	if (ch == '\0')
-		return (str + ft_strlen(str));
-	while (*str != '\0')
+	int len;
+	int flag;
+
+	len = 0;
+	flag = 0;
+	if (nbr == 0)
+		return (1);
+	if (nbr < 0)
+		flag++;
+	while (nbr)
 	{
-		if (*str == ch)
-			return (str);
-		str++;
+		len++;
+		nbr /= base;
 	}
-	return (0);
+	if (flag)
+		len++;
+	return (len);
 }

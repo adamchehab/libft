@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abronn <marvin@42.f>                       +#+  +:+       +#+        */
+/*   By: abronn <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 14:27:09 by abronn            #+#    #+#             */
-/*   Updated: 2020/11/26 21:58:30 by abronn           ###   ########.fr       */
+/*   Updated: 2021/02/22 00:40:03 by abronn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 
 int			ft_isalnum(int a);
 int			ft_isalpha(int a);
@@ -41,7 +39,7 @@ void		*ft_memccpy(void *dest, const void *source, int c, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 char		*ft_strdup(const char *str);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
-void		ft_putchar_fd(char c, int fd);
+int			ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char const *s, int fd);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
@@ -52,5 +50,11 @@ void		ft_putendl_fd(char const *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
+char		*ft_itoa_u(unsigned int n, int base, int flag);
+char		*ft_itoa_ull(unsigned long long int n, int base);
+int			ft_putstr_len(int len, char *s);
+int			ft_print_char_times(int i, char c);
+int			ft_get_nbr_len(int nbr, int base);
+int			ft_zero_len(const char *format);
 
 #endif

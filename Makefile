@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+# DIRECTRIES
 SRC_DIR = src
 INC_DIR = includes
 OBJ_DIR = obj
@@ -18,6 +19,7 @@ CC = gcc
 FLAGS = -Wall -Werror -Wextra
 NAME = libft.a
 
+# SOURCES
 SRC = 	$(SRC_DIR)/ft_split.c 		\
 		$(SRC_DIR)/ft_strtrim.c 	\
 		$(SRC_DIR)/ft_strmapi.c 	\
@@ -52,7 +54,14 @@ SRC = 	$(SRC_DIR)/ft_split.c 		\
 		$(SRC_DIR)/ft_tolower.c 	\
 		$(SRC_DIR)/ft_toupper.c 	\
 		$(SRC_DIR)/ft_memset.c 		\
+		$(SRC_DIR)/ft_itoa_u.c 		\
+		$(SRC_DIR)/ft_itoa_ull.c 	\
+		$(SRC_DIR)/ft_putstr_len.c 	\
+		$(SRC_DIR)/ft_print_char_times.c 	\
+		$(SRC_DIR)/ft_get_nbr_len.c \
+		$(SRC_DIR)/ft_zero_len.c \
 
+# OBJECTS
 OBJ = 	$(OBJ_DIR)/ft_split.o 		\
 		$(OBJ_DIR)/ft_strtrim.o 	\
 		$(OBJ_DIR)/ft_strmapi.o 	\
@@ -87,14 +96,19 @@ OBJ = 	$(OBJ_DIR)/ft_split.o 		\
 		$(OBJ_DIR)/ft_tolower.o 	\
 		$(OBJ_DIR)/ft_toupper.o 	\
 		$(OBJ_DIR)/ft_memset.o 		\
+		$(OBJ_DIR)/ft_itoa_u.o 		\
+		$(OBJ_DIR)/ft_itoa_ull.o 	\
+		$(OBJ_DIR)/ft_putstr_len.o 	\
+		$(OBJ_DIR)/ft_print_char_times.o 	\
+		$(OBJ_DIR)/ft_get_nbr_len.o \
+		$(OBJ_DIR)/ft_zero_len.o \
 
-GREEN		= \033[0;32m
-
-YELLOW		= \033[0;33m
-
-RED			= \033[0;31m
-
-RESET		= \033[0m
+# COLORS
+GREEN	= \e[32m
+YELLOW	= \e[33m
+RED		= \e[31m
+PURPLE	= \e[35m
+NC		= \e[39m
 
 all: $(NAME)
 
@@ -106,15 +120,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo "$(YELLOW)libft:$(RESET) $(GREEN)$(NAME) was created.$(RESET)"
-
+	@echo "$(YELLOW)libft    :$(NC) $(GREEN)$(NAME) was created.$(NC)"
 
 clean:
 	@rm -frd $(OBJ_DIR)
-	@echo "$(YELLOW)libft:$(RESET) $(RED)/obj folder was deleted.$(RESET)"
+	@echo "$(YELLOW)libft    :$(NC) $(RED)/obj folder was deleted.$(NC)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(YELLOW)libft:$(RESET) $(RED)$(NAME) was deleted.$(RESET)"
+	@echo "$(YELLOW)libft    :$(NC) $(RED)$(NAME) was deleted.$(NC)"
 
 re: fclean all

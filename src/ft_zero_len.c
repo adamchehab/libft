@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_zero_len.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abronn <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/13 19:57:31 by abronn            #+#    #+#             */
-/*   Updated: 2020/11/13 19:57:36 by abronn           ###   ########.fr       */
+/*   Created: 2021/02/21 23:12:27 by abronn            #+#    #+#             */
+/*   Updated: 2021/02/21 23:12:38 by abronn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(char *str, char ch)
+int		ft_zero_len(const char *format)
 {
-	if (ch == '\0')
-		return (str + ft_strlen(str));
-	while (*str != '\0')
+	int len;
+
+	len = 0;
+	while (*format == '0')
 	{
-		if (*str == ch)
-			return (str);
-		str++;
+		format++;
+		len++;
 	}
-	return (0);
+	return (len);
 }
